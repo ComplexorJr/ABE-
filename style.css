@@ -1,0 +1,269 @@
+:root {
+  --bg-light: linear-gradient(to right, #e0f2f1, #a5d6a7);
+  --bg-dark: linear-gradient(to right, #263238, #37474f);
+  --text-light: #2e7d32;
+  --text-dark: #ffffff;
+  --card-bg-light: #ffffff;
+  --card-bg-dark: #455a64;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-light);
+  padding: 2rem;
+  transition: background 0.4s, color 0.4s;
+  animation: fadeInBody 1.5s ease-in forwards;
+}
+
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(67, 160, 71, 0.9);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  animation: slideDown 1s ease forwards;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+  font-size: 12px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: white;
+  color: #2e7d32;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+nav button:hover {
+  background-color: #c8e6c9;
+}
+
+.dark-mode {}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+header img {
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  animation: popIn 1s ease forwards, rotateLogo 15s linear infinite;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  animation: slideInText 1s ease forwards;
+}
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 35px;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #1b5e20;
+}
+
+.intro {
+  background: #ffffffcc;
+  border-left: 6px solid #43a047;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+  box-shadow: 0 6px 12px var(--shadow-light);
+  animation: fadeInUp 1s ease forwards;
+}
+
+body.dark-mode .intro {
+  background: #546e7acc;
+  border-left-color: #81c784;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Same base styling for cards */
+.card {
+  background: var(--card-bg-light);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px var(--shadow-light);
+  text-align: center;
+  transition: transform 0.6s ease, box-shadow 0.3s ease, background 0.4s;
+  transform: rotateY(-90deg);
+  opacity: 0;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #43a047;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+  animation: fadeInText 1.4s ease forwards;
+}
+.contact-section {
+  background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+  padding: 4rem 2rem;
+  border-radius: 1rem;
+  margin-top: 4rem;
+}
+
+.contact-section .section-title {
+  color: #2e7d32;
+}
+
+.contact-section .card {
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .contact-section {
+  background: linear-gradient(to right, #37474f, #263238);
+}
+
+.dark-mode .contact-section .card {
+  background: #455a64;
+}
+.wave-divider {
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 100px;
+}
+
+.dark-mode .wave-divider path {
+  fill: #37474f; /* matches dark mode background */
+}
+/* When card becomes visible */
+.card.show {
+  transform: rotateY(0);
+  opacity: 1;
+}
+
+.dark-mode .card {
+  background: var(--card-bg-dark);
+  box-shadow: 0 6px 20px var(--shadow-dark);
+}
+
+.card:hover {
+  transform: translateY(-5px) rotateY(0);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 2rem 0 1rem;
+  animation: fadeInUp 1s ease forwards;
+}
+
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 0.95rem;
+  animation: fadeInText 2s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rotateLogo {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideUpCard {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInText {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
